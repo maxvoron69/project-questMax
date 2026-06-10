@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron&display=swap');
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: #00ff41;
+    text-align: left;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+h1, h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2rem;
+    text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+    margin-bottom: 30px;
+    animation: pulse 2s infinite;
+    margin-left: 0;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: normal;
+    margin: 15px 0;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41;
+    }
+    50% {
+        text-shadow: 0 0 20px #00ff41, 0 0 40px #00ff41, 0 0 60px #00ff41;
+    }
+}
