@@ -11,7 +11,7 @@ import static org.mockito.Mockito.*;
 
 public class StatisticsManagerTest {
 
-    // Тест 1: Инициализация статистики для новой сессии
+    /**Тест 1: Инициализация статистики для новой сессии*/
     @Test
     public void testInitSessionStats_NewSession() {
         Map<String, Object> realSessionAttributes = new HashMap<>();
@@ -36,7 +36,7 @@ public class StatisticsManagerTest {
         assertEquals(1, stats.get("totalGames"));
     }
 
-    // Тест 2: Инициализация статистики для существующей сессии
+    /**Тест 2: Инициализация статистики для существующей сессии*/
     @Test
     public void testInitSessionStats_ExistingSession() {
         Map<String, Object> realSessionAttributes = new HashMap<>();
@@ -65,7 +65,7 @@ public class StatisticsManagerTest {
         assertEquals(1, stats.get("totalGames"));
     }
 
-    // Тест 3: Инкремент количества игр
+    /**Тест 3: Инкремент количества игр*/
     @Test
     public void testIncrementGames() {
         Map<String, Object> realSessionAttributes = new HashMap<>();
@@ -93,7 +93,7 @@ public class StatisticsManagerTest {
         assertEquals(2, updatedStats.get("totalGames"));
     }
 
-    // Тест 4: Получение статистики из сессии
+    /**Тест 4: Получение статистики из сессии*/
     @Test
     public void testGetSessionStats() {
         Map<String, Object> realSessionAttributes = new HashMap<>();
@@ -116,7 +116,7 @@ public class StatisticsManagerTest {
         assertEquals(1, retrievedStats.get("totalGames"));
     }
 
-    // Тест 5: Получение статистики, когда она не инициализирована
+    /**Тест 5: Получение статистики, когда она не инициализирована*/
     @Test
     public void testGetSessionStats_Null() {
         Map<String, Object> realSessionAttributes = new HashMap<>();
