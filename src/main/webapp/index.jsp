@@ -40,42 +40,14 @@
 а фотографирует его Полярный Меридиан - наш навигатор.<br>
 А как обращаться к вам?
 <br>
-<div class="col-md-6">
-<label for="createName" class="form-label">Введите своё имя<span class="text-danger"> </span></label>
-<input type="text" id="createName" class="form-control" maxlength="20" required>
-</div>
-<br>
-<button id="saveNameBtn" class="form-control" style="width: 200px; cursor: pointer;">Представиться</button>
-<div id="welcomeMessage" style="display: none; margin-top: 20px; font-size: 1.5rem;"></div>
-<script>
-    $(document).ready(function() {
-        console.log('jQuery loaded and DOM ready');
-        $('#saveNameBtn').click(function() {
-            const name = $('#createName').val();
-            console.log('Button clicked, name:', name);
-            if (name.trim()) {
-                $('#welcomeMessage').html('Приветствуем вас, капитан ' + name + '!').show();
-                $('#saveNameBtn').hide();
-                $('#createName').prop('disabled', true);
-            } else {
-                console.log('Name is empty');
-            }
-        });
-    });
-</script>
-<br>
-<button id="startTheQuest" class="form-control" style="width: 200px; cursor: pointer;">Начать путешествие</button>
-<script>
-    $(document).ready(function() {
-        console.log('jQuery loaded and DOM ready');
-        $('#startTheQuest').click(function() {
-            const name = $('#createName').val();
-            if (name.trim()) {
-                window.location.href = 'start?name=' + encodeURIComponent(name);
-            }
-        });
-    });
-</script>
+<form method="POST" action="start">
+    <div class="col-md-6">
+        <label for="createName" class="form-label">Введите своё имя<span class="text-danger"> </span></label>
+        <input type="text" id="createName" name="name" class="form-control" maxlength="20" required>
+    </div>
+    <br>
+    <button type="submit" class="form-control" style="width: 200px; cursor: pointer;">Начать путешествие</button>
+</form>
 
 <!-- Таблица со статистикой из сессии -->
 <%

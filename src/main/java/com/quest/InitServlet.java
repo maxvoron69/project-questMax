@@ -12,9 +12,14 @@ import java.io.IOException;
 public class InitServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.sendError(HttpServletResponse.SC_METHOD_NOT_ALLOWED, "Use POST to start a game");
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Получение HTTP-сессии
-        HttpSession session = req.getSession(true);
-        // Получение имени игрока из URL-параметра
+        HttpSession session = req.getSession();
+        // Получение имени игрока из POST-параметра
         String playerName = req.getParameter("name");
         if (playerName == null || playerName.trim().isEmpty()) {
             playerName = "неизвестно";
@@ -23,7 +28,10 @@ public class InitServlet extends HttpServlet {
         StatisticsManager.initSessionStats(session, playerName);
         // Инкремент количества игр
         StatisticsManager.incrementGames(session);
-        // Перенаправление запроса на страницу quest1.jsp через сервер
-        getServletContext().getRequestDispatcher("/quest1.jsp").forward(req, resp);
+        // Создание сессии игры и инициализация первым шагом
+        GameSession gameSession = new GameSession(playerName, QuestStep.ROUND_1);
+        session.setAttribute("gameSession", gameSession);
+        // Перенаправление на сервлет квеста
+        resp.sendRedirect(req.getContextPath() + "/quest");
     }
 }
